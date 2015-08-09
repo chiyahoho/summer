@@ -27,42 +27,36 @@
 
 \section{训练过程}
 
-我是过程。
+mty写J，完了没过样例，打印。tdy去写A，文件读入wa了一发，再交AC。jj去写K，完了没过样例，打印。mty改J，1A。jj改K，1A，此时38min。tdy写F，1A，此时62min。tdy写B，小问题wa一发，2A，此时93min。接下来想DEI。tdy想出了E，开始写，由于此题数据不好测试，基本只能靠阅读代码，至260min一直wa。于是写生成数据写check，对拍，至结束未完成。期间mty与jj推出D题部分情况公式，I题接近正解。
 
 \section{解题报告}
 
-\problem{我是A题的标题}
+\problem{Alter Board}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 22min(2Y)
 \item[题意]
-我是题意。\\这是换行
-回车不换行。
+给定n*m大小的黑白棋盘，我们能选择棋盘的一个矩形区域进行取反操作，即黑变白，白变黑，问最少进行多少次操作能使得棋盘所有格子同色，要求输出方案。
 \item[题解]
-我是题解。
+观察发现，我们先对所有偶数列进行操作，再对所有偶数航进行操作即可满足题意，手动输出方案即可。
 \end{description}
 
-\problem{我是B题的标题}
+\problem{Burrito King}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 93min(2Y)
 \item[题意]
-我是题意。
+给定n道菜，以及每道菜的分量，一道菜的单位分量能使Albert获得ai的愉悦度，同时使Barney获得bi的厌恶度。问在满足Albert至少获得A点愉悦度，Barney获得至多B点愉悦度的条件下，Albert最多能获得多少点愉悦度，分量可以为小数。
 \item[题解]
-我是题解。
+贪心，每道菜按性价比排序，即ai/bi排序之后贪心即可，注意bi等于0的情况。
 \end{description}
 
-\problem{我是C题的标题}
+\problem{Cactus Generator}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛后通过
-\item[题意]
-我是题意。
-\item[题解]
-我是题解。
+\item[情况] 尚未通过
 \end{description}
 
 \problem{Damage Assessment}
@@ -87,48 +81,38 @@
 每一个状态记录对手的可能状态，刚开始是全部。我出一个至少能赢可能状态中其中一个的招，根据AI的反应将分化向3个新状态。如果某个集合与其祖先的集合相同，则不分化，连一条边至该祖先。
 \end{description}
 
-\problem{我是F题的标题}
+\problem{Filter}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 62min(1Y)
 \item[题意]
-我是题意。
+给定Bloom Filter的规则，即每个数据库文件有m位。对每个user而言，在f个function下的值所对应的那个bit为1。现给定m个数据库文件和很多用户，问哪些数据库文件至少包含一个用户。
 \item[题解]
-我是题解。
+模拟题。
 \end{description}
 
-\problem{我是G题的标题}
+\problem{Gomoku}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
-\item[题意]
-我是题意。
-\item[题解]
-我是题解。
+\item[情况] 尚未通过
 \end{description}
 
-\problem{我是H题的标题}
+\problem{Hidden Maze}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
-\item[题意]
-我是题意。
-\item[题解]
-我是题解。
+\item[情况] 尚未通过
 \end{description}
 
-\problem{我是I题的标题}
+\problem{Improvements}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 赛后通过
 \item[题意]
-我是题意。
+在1-n的空间上给定n艘飞船的位置，对每个飞船i(i<n)都有一条边连向飞船i+1，问在满足边都不相交的情况下调整飞船使得不动的飞船数最多。
 \item[题解]
-我是题解。
+因为可以调整飞船到任意位置，调整一条飞船即为删除。满足边不相交即为求最长的上升+下降子序列。
 \end{description}
 
 \problem{Jokewithpermutation}
@@ -156,6 +140,6 @@ nm很小，直接暴力统计。
 
 \section{总结}
 
-我是总结。
+卡题之后不能忙着一个人搞，要把自己的思路和想法与队友交流，可能很快就发现错误。
 
 \end{document}

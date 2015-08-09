@@ -1,0 +1,145 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月6日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了4道题目，比赛后完成了4道题目，共完成8道题目。
+
+\section{训练过程}
+
+mty发现了K题，与jj讨论后立刻写K。7min提交，OLE，找错改地方，仍然OLE。tdy重写K，21min通过（后K题rejudge之前的代码都A了）。jj读A，写，WA。tdy写F，TLE，此时74min。改A提交WA，弃题。mty想出C的结论，写C，一次通过。jj写H，一次通过，此时124min。tdy找到瓶颈，位运算优化，仍然TLE。jj想出F的一个优化，非常麻烦，tdy修改后调试，修过bug后仍然TLE。mty读A题代码，找错，未果，重写A，WA，此时233min。jj用线段树写I，WA，此时278min，还剩20分钟，决定放弃I（事后知道线段树会T，要用堆）。mty发现A的错误，tdy立刻想到了用拓扑排序修A，jj去写，AC。tdy在最后一小时写了B，写完发现做法错误。
+
+\section{解题报告}
+
+\problem{Average}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 296min(6Y)
+\item[题意]
+n个人围一圈，任意两个相邻的人可以传递一次一颗糖果。问能否使所有人糖果数相同，输出方案。
+\item[题解]
+减去平均数，枚举第n个人给第1个人多少糖果，从1开始扫一遍，维护给下一个人多少糖果。因为有人可能没有糖果，要在拿到糖果后再传出去，所以输方案时要先建图拓扑排序。
+\end{description}
+
+\problem{Bipartite Graph}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 赛后通过
+\item[题意]
+给定n个点，m条边，问在删哪个点的情况下此图为二分图，求所有这样的点。
+\item[题解]
+若一个点被删，那么与它相连的边都失效。一条边(u,v)(u<v)在1~n上的有效域为(1~u-1),(u+1~v-1),(v+1~n)我们在1~n上做文章。用类似线段树的思想，若一条边的一个作用域为(s,t)对当前的线段树区间(l,r)若s==l且t==r则加入这个区间，令mid=(l+r)/2，若t<=mid则加入左区间，若s>mid则加入右区间，若(s,t)跨过mid，则(s,mid)加入左区间(mid+1,t)加入右区间。dfs这棵线段树，当递归到每一个区间时加入线段去判断是否仍为二分图，递归时则恢复，可以用栈维护。判断是否为二分图可用并查集维护，不用路径压缩，启发式合并。总时间复杂度$mlogn^2$
+\end{description}
+
+\problem{Cake}
+
+\begin{description}
+\item[负责] 马天翼、金杰
+\item[情况] 比赛中（后？）通过 - 92min(1Y)
+\item[题意]
+给1~n的数，问能不能分到m块里使总和相等。
+\item[题解]
+比赛中是mty做的，把n个数字倒着放到m块里能放就放，就AC了。赛后改了数据。jj重写，改成每次挑剩余空间最多的块放，如果放哪块能刚好填满就放那块，就AC了。数据太水了。。
+\end{description}
+
+\problem{Deal}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Easy Sequence}
+
+\begin{description}
+\item[负责] 汤定一、金杰
+\item[情况] 比赛后通过
+\item[题意]
+给一个括号序列，$ans_i$=包含第i个字符的合法子串数。问sum of i*$ans_i$。
+\item[题解]
+$match_i$为i的匹配括号。$a_i$为以i开始的方案数。$b_i$为以i结尾的方案数。a[i]=a[match[i]+1]+1, b[i]=b[match[i]-1]+1;\\
+$up_i$为最小的包含了i和match[i]的合法序列。ans[i]=ans[match[i]]=ans[up[i]]+a[i]*b[match[i]];
+\end{description}
+
+\problem{First One}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 赛后通过
+\item[题意]
+给定序列A，for i from 1 to n for j from i to n (floor(log2(S(i,j))+1)*(i+j)
+\item[题解]
+注意到从i开始的字段和log2(S(i,j))最多有35个值，于是对于每个i，把i-1的区间往后推即可，因为是单调的。时间复杂度(nlogn)
+\end{description}
+
+\problem{Group}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Hiking}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 124min(1Y)
+\item[题意]
+你尝试邀请n个人参加聚会，每个人答应参加的条件是此时去的人数为Li~Ri之间，给一个邀请顺序使参会者最多。
+\item[题解]
+以L为关键字排序，一旦L小于当前人数就将此人加入堆，堆按R排序小根堆，每次取一个R最小的出来看看会不会参加。
+\end{description}
+
+\problem{In Touch}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+n个位置一排，位置i可以用Ci花费传送到距离为Li~Ri的地方，问从1到每个位置的最小花费。
+\item[题解]
+用类似dijkstra的方法做，每次更新就往堆里插一个node表示更新的一段，记录左端点右端点和更新的距离。然后每次从堆中取出一段来，从l到r扫一遍去更新。为了将扫的效率降至log，在外面开一个1~n的set表示此点未确定，每次扫完一个从set里删掉，扫l~r的时候就能用lowerbound了。
+\end{description}
+
+\problem{Just A String}
+
+\begin{description}
+\item[情况] 比赛中通过 - 233min(1Y)
+\end{description}
+
+\problem{Key Set}
+
+\begin{description}
+\item[负责]汤定一、马天翼
+\item[情况] 比赛中通过 - 7min(1Y)
+\item[题意]
+给定集合{1,2,……,n}，求n的子集中和为奇数的个数
+\item[题解]
+$2^(n-1)-1$
+\end{description}
+
+\section{总结}
+
+不要一头栽进一道题里。
+
+\end{document}

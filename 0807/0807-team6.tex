@@ -1,0 +1,138 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月7日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了8道题目，比赛后完成了0道题目，共完成8道题目。
+
+\section{训练过程}
+
+mty写B，交错题后AC。之后tdy写A，1次通过。mty写E，tdy写J，70min相继通过。接着tdy过了H。90min的时候迟到的jj出现了。mty与jj讨论了I，mty的想法是对的，mty去写I。jj将F题意告诉tdy，tdy想出做法，去写F。jj去想D和G。I过了，F发现反例，jj去想F，想出另一种解法，WA一发（忘记乘2）PE一发后通过。看板有人过C，tdy想出了C，写C，WA，jj重写C，重写过程中tdy通过了C。mty对G打表找规律，没找到。
+
+\section{解题报告}
+
+\problem{Decoding Baby Boos}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 41min(1Y)
+\item[题意]
+给定字符串，给定m个操作，每次操作把字符串中的一个字符变成另一个，求最后字符。
+\item[题解]
+先求每个字符最后会变成什么字符，再扫一遍即可。
+\end{description}
+
+\problem{And Or}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 29min(3Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{A game for kids}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比比赛中通过 - 261min(3Y)
+\item[题意]
+给定n个点的树，每个点上可以取Li到Hi个石子，对每条路径，每种取石子方案的值为路径上每个点所取石子树的最大公约数。问每个值能通过多少种不同的方法得到。从u到v与从v到u为一种。
+\item[题解]
+树形dp，对一个点统计经过它或它子树的路径即可。因为Li和Hi的范围是50,，所以时间复杂度$n*50^2$
+\end{description}
+
+\problem{Flood in Gridland}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Refraction}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 70min(2Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Reverse Polish Notation}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 208min(6Y)
+\item[题意]
+给一个只有数字a和+的后缀表达式，让使用最少的操作数使得表达式合法。操作为：添加1个a或+，或交换相邻的两个字符。
+\item[题解]
+先在前面补a或后面补+使得最后a比+多1个。a视为1，+视为-1，求前缀和，要求任何一个位置的值不低于1。因为一次交换操作的作用是把最小值+2，如果有两个最小值不如前面补a后面补+，因此若只有一个最小值就交换，之后前后补。
+\end{description}
+
+\problem{Just Some Permutations}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Load Balancing}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 94min(1Y)
+\item[题意]
+给定160以内的很多数（可重复），问在划分为四段的情况下，怎样划分才能让每段的个数更接近。
+\item[题解]
+暴力枚举三个分段点即可。
+\end{description}
+
+\problem{Volume of Revolution}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 135min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Maximum Score}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 72min(2Y)
+\item[题意]
+给定n个数，每个数出现f次，问怎样排列这些数，使得表达式值最大。
+\item[题解]
+显然，排成单峰最优，即可计算答案。方案数即为每个相同的数既可以选择在单峰的左边也可以选择右边，逐一乘起来即可。
+\end{description}
+
+\section{总结}
+
+写完题马上下，换人上去写。找不出错可以多重写，其实耗时不会很多。尽量保证每个人手上都有东西写。
+
+\end{document}

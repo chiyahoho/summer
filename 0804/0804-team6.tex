@@ -1,0 +1,144 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月4日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了4道题目，比赛后完成了5道题目，共完成9道题目。
+
+\section{训练过程}
+
+开局tdy写07，过。Mty写05，有问题，tdy与mty调试通过，wa6发，62min过。Tdy写02，没有发现性质，用nlogn的方法写，没过样例，推样例，发现简单解法，89min过。Tdy写10，一小时后没过。Jj将06算法告诉tdy，tdy立刻继续写06，100分钟后没过。先是RE，改手工栈，数组越界，检查代码发现不用手工栈，是dfs没return，修改后TLE。优化代码，仍然TLE。jj重写，过程中发现TLE的原因，加前向弧优化，WA。此时269min。tdy将10改为费用流，289min过10。此时发现06WA在理解错题意，mty和jj口述代码，但变量命名习惯不同，对tdy的代码使用了错误的变量，还是wa。赛后修改变量名通过。
+
+\section{解题报告}
+
+\problem{MZL's Circle Zhou}
+
+\begin{description}
+\item[负责] 金杰、汤定一
+\item[情况] 比赛后通过
+\item[题意]
+从两个串中各取一个子串拼起来，问一共有多少不同的结果。
+\item[题解]
+如果有两段重合，取中间任何一个点分隔都是一个方案，但这些方案的结果相同，因此只考虑统计以最后一个点为分隔。对26个字母c，统计cntA[c]为A中以c为结尾的不同字符串的个数，cntB[c]为B中以c为开头的不同字符串的个数。对于每个c，(A中不同的子串数-cntA[c])*cntB[c]就是以c为结尾分隔符，并且A不能向后再扩展一位的结果。再加上AB中子串数就是答案。其中cntA与cntB可以由后缀自动机得出。注意答案大于longlong。
+\end{description}
+
+\problem{MZL's xor}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 89min(1Y)
+\item[题意]
+给定序列A，求2*a1xor2*a2xor...xor2*an
+\item[题解]
+按照题意做即可。
+\end{description}
+
+\problem{MZL's combat}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{MZL's game}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 赛后通过
+\item[题意]
+有n男生在进行游戏，每一次随机选择一个男生出局，他会攻击仍在游戏中的所有人，每个人在被攻击时有p的概率出局，1-p的概率继续游戏。问每个人被攻击0到n-1次的概率。
+\item[题解]
+题意等价于每次随机选择一个男生，若他已经出局，则什么也不做，若他还在游戏中则让他攻击其他人。动规，记f[i][j]为前i轮选到了j个在游戏中的男生的概率。$f[i][j]=f[i-1][j]*(1-((1-p)^j))+f[i-1][j-1]*((1-p)^(j-1))$，最后被攻击k次的答案为0~$n-1f[i][k]*((1-p)^k)$。
+\end{description}
+
+\problem{MZL's chemistry}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 62min(7Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{MZL's endless loop}
+
+\begin{description}
+\item[负责] 汤定一、金杰
+\item[情况] 比赛后通过
+\item[题意]
+给个无向图，请将每条边都定向成有向边，使得每个点的入度出度相差<1
+\item[题解]
+有环转一圈，完了是森林。每棵树dfs求解即可。找环就dfs，找到一条返祖边就回溯删边。\\
+一个没有实现过的简单做法：度为奇数的点数量是偶数。随意配对连边，跑一遍欧拉路即是答案。
+\end{description}
+
+\problem{MZL's simple problem}
+
+\begin{description}
+\item[负责] 汤定一、马天翼
+\item[情况] 比赛中通过 - 16min(1Y)
+\item[题意]
+给定三种操作，加入一个数，删掉最小的数，询问最大的数。
+\item[题解]
+用set模拟即可。
+\end{description}
+
+\problem{MZL's munhaff function}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 赛后通过
+\item[题意]
+给定一个序列A，f[i][j]=f[i][j>>1]+s[i]，f[i][j]=f[i-1][j+1]，其中s[i]=a[i]+a[i+1]+……+a[n]。求最小的f[n][1]。
+\item[题解]
+由题目名字知此题可以用huffman求解，仔细分析可知确实能用huffman。
+\end{description}
+
+\problem{MZL's Border}
+
+\begin{description}
+\item[负责] 马天翼、汤定一
+\item[情况] 比赛后通过
+\item[题意]
+给出一个斐波那契字符串，问第n个串前m位的前max位与后max位相等。
+\item[题解]
+打表找规律，用java写。
+\end{description}
+
+\problem{MZL's City}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+给定n个城市，三种操作：1.修好x到y之间的路2.有很多路断掉了3.修好从x出发能到达的城市。地三种操作每次最多能修好k座城市，问最多能修好多少座城市，并输出字典序最小的方案。
+\item[题解]
+费用流，最小费用最大流。源点到第三种操作连流量为k的边，它的费用一会讨论。每次操作向它能修好的城市连边流量为1费用为0的边，每座城市向汇点连流量为一费用为0的边。源点流向第三种操作的费用逐次操作递减，此举是为了满足字典序最小。因为dinic网络流不能保证每次都是从后往前更新的。
+\end{description}
+
+\section{总结}
+
+变量名要有意义，某些常用变量要有队内共识，代码是有可能交给队友看的。如果一个人身上的题比较多，尽可能的分担给队友，否则一卡就完了。
+
+\end{document}
