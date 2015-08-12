@@ -46,15 +46,15 @@ mty写05，忘删调试信息挂一次，string访问越界挂两次，jj重写0
 
 \end{description}
 
-\problem{我是B题的标题}
+\problem{Tree Maker}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 赛后通过
 \item[题意]
-我是题意。
+给定一棵树，它初始时只有根节点，给定5种操作，1.跳到根节点2.跳到左儿子3.跳到右儿子4.在左儿子新建x个结点的子树5.在右儿子新建x个结点的子树。统计不同的树的形态的个数。
 \item[题解]
-我是题解。
+树形动规。我们知道它走过的树的结点。每个4、5操作可以在树上的一个范围新建一些结点，对这些范围分别进行动规再乘起来即可。f[u][i+j]=f[l][i]*f[r][j]，u是父节点，f[l][i]是左子树新建i个结点的方案数，f[r][i]是右子树新建j个结点的方案。
 \end{description}
 
 \problem{Hotaru's problem}
@@ -68,15 +68,15 @@ mty写05，忘删调试信息挂一次，string访问越界挂两次，jj重写0
 先用manacher求出以每个空为中心的最大回文串的长度，然后从最后开始扫，将他们加进set和vector，一旦到了一个位置使后面的某个点无法覆盖到这个点，则将其删除。求答案即可。
 \end{description}
 
-\problem{我是D题的标题}
+\problem{Segment Game}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 尚未通过
+\item[负责] 汤定一
+\item[情况] 赛后通过
 \item[题意]
-我是题意。
+在一维上放线段。有两种操作：1.在[p,p+i]放一条长为i的线段，i为第i次1操作。2.删除第i次加入的线段。每次1操作都输出[p,p+i]内完整线段的个数
 \item[题解]
-我是题解。
+因为每次加入操作是从短到长加入的。每次统计只需统计[l,r]内右端点的个数减去跨越了l的右端点个数，即减去[0,l-1]左端点个数与[0,l-1]右端点个数的差值。因此用两个树状数组即可。
 \end{description}
 
 \problem{The shortest problem}
@@ -101,37 +101,37 @@ mty写05，忘删调试信息挂一次，string访问越界挂两次，jj重写0
 暴力模拟。
 \end{description}
 
-\problem{我是G题的标题}
+\problem{Gray code}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 61min(1Y)
 \item[题意]
-我是题意。
+给定二进制码，每位为'0','1','?'，问它所对应的格雷码分数最高是多少，若格雷码第i位为1即可获得a[i]分。
 \item[题解]
-我是题解。
+格雷码与二进制码的转换关系为x xor x>>1,第i位格雷码只与第i位与第i+1位二进制码有关。动规f[i][j]，第i位格雷码为j的最大分数。
 \end{description}
 
-\problem{我是H题的标题}
+\problem{Convex Polygon}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 赛后通过
 \item[题意]
-我是题意。
+给定n,m,k，求从正n边形中选m个顶点，形成的多边形中正好有k个锐角的方案数。
 \item[题解]
-我是题解。
+分5种情况讨论，详情请看代码。
 \end{description}
 
-\problem{我是I题的标题}
+\problem{Root}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 赛后通过
 \item[题意]
-我是题意。
+给定sum和m，m个询问，每次询问给定x、y，求使得$x^k=y$在mod p下最小的k。p是sum的质因子，只要满足一个p即可。
 \item[题解]
-我是题解。
+$x^k$ mod p=y，可以转化为klogd(x)mod(p-1)=logd(y)，可以用欧几里得扩展求得最小的k，其中d为p的原根。logd(x)的求解可以转化为$d^{kx}$ mod p=x，可以用baby step giant step。
 \end{description}
 
 \problem{Leader in Tree Land}
@@ -152,20 +152,21 @@ now为可用标号数
 
 \end{description}
 
-\problem{我是K题的标题}
+\problem{Mahjong tree}
 
 \begin{description}
-\item[负责] 负责一、负责二
-\item[情况] 比赛中通过 - 233min(1Y)
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 118min(1Y)
 \item[题意]
-我是题意。
+给定一棵树，给每个结点分配1-n个苹果，要满足两个要求：1.以一个结点为根的子树苹果个数连续2.一个结点的儿子苹果个数连续。求可行的方案数。
 \item[题解]
-我是题解。
+树形动规。一个结点若有x个单个的儿子节点，这个点的答案乘上x!。父节点乘上所有儿子的方案数，若一个结点有一个以上的非单个结点，该节点答案乘以2。若n>1，根节点答案乘以2。
 \end{description}
 
 
 \section{总结}
 
-我是总结。
+递归的时候注意全局变量是否更改。
 
 \end{document}
+
