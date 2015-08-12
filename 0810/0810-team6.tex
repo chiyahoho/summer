@@ -1,0 +1,161 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月10日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了7道题目，比赛后完成了2道题目，共完成9道题目。
+
+\section{训练过程}
+
+开局mty写A，1次通过。tdy写宿命之F，文件wa一发后AC。jj写E，wa1次后通过。mty写B，1次通过。mty写D，wa1次后通过。tdy写了C，但错了。此时130min。jj写G，WA。tdy与mty一起写C，修改了tdy错误的算法，算法对了后wa了一发补上了讨论，通过。jj修改错误后G题仍然wa。看板全队去看H与J。mty发现G没有考虑水平垂直情况，jj修改后通过。jj写H，最后交了两发，因为vector<pair<>>连写CE。赛后提交re。tdy在280min想出了H的网络流做法，但没有时间实现。
+
+\section{解题报告}
+
+\problem{Aztec Pyramid}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 14min(1Y)
+\item[题意]
+给n个木块，问最多搭几层，使木块都稳定。稳定的定义是，该木块在地上，或者该木块的下方木块周围都有木块。
+\item[题解]
+第一层块数1
+第二层1+3+1
+第三层1+3+5+3+1
+以此类推即可。
+\end{description}
+
+\problem{Battleship}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 68min(1Y)
+\item[题意]
+给一个10*10的矩阵，按数字顺序轰炸该点。要求用一个1*4，2个1*3，3个1*2和4个1*1，放到该矩阵上，相互不相邻，不相交，求一种方案使这些小矩阵被轰炸完时间最迟。
+\item[题解]
+找到100，覆盖一个1*1，之后随便构造就行了。
+\end{description}
+
+\problem{Chemistry}
+
+\begin{description}
+\item[负责] 汤定一、马天翼
+\item[情况] 比赛中通过 - 220min(2Y)
+\item[题意]
+求有n个碳原子的烷烃的同分异构体的个数。
+\item[题解]
+先求烷基的个数，在枚举重心和支链数和支链长进行讨论即可。
+\end{description}
+
+\problem{Deepest Station}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 131min(2Y)
+\item[题意]
+给两个点，找一个中间点，使两个点到这个点的连线都与水平面呈45度角。
+\item[题解]
+直接推公式。
+\end{description}
+
+\problem{Electricity}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 55min(2Y)
+\item[题意]
+两种插头。A插板能插到B插座上，B插板插在A上。机器只能插在A上。给所有的插板规格，问最多插多少机器。
+\item[题解]
+模拟题。A插板能插就插，插不下了多搞个B插板。
+\end{description}
+
+\problem{Final Standings}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Grid}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 243min(4Y)
+\item[题意]
+在纸上画一条直线。再画一些等距竖线和等距横线，与该直线相交得一系列点。现在只给所有点坐标，问竖线横线怎么画的。
+\item[题解]
+按x排序取前3个点。则必然有两个点都是横线上的或都是竖线上的。枚举所有前3个点的情况，得竖（横）线方案，然后根据剩下的点求横（竖）线方案即可。
+\end{description}
+
+\problem{Hospital}
+
+\begin{description}
+\item[负责] 汤定一、金杰
+\item[情况] 比赛后通过
+\item[题意]
+有一些当班护士和闲置护士。给出每个岗位有哪些护士可以胜任。1.问哪些人可以休息不出乱子。2.问哪两个人本来可以休息但是两个人一起休息就不行。
+\item[题解]
+写了两个解法：\\
+金杰：问题1只要从每个闲置护士开始bfs一遍即可。问题2就枚举哪个人现在休息，把他删掉，重新跑bfs。原先能休息的现在不能休息就加入答案。原先能休息现在不能休息的人之间也加入答案。
+汤定一：网络流。
+\end{description}
+
+\problem{Intelligent Design}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Juggle}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛后通过
+\item[题意]
+一列数列（n的全排列）有五个参数：逆序对数、相邻逆序对数、最长上升子序列长度、最长上升子串长度、不动点个数。现给出两个数列的五个参数的大小关系，求构造两个符合要求的长度为l的数列。
+\item[题解]
+由于五个参数的所有情况种数是3^5=243种，经过搜索发现前7个数的全排列就可以找到以上所有情况，因此先预处理前七个的情况，然后暴力枚举找出符合要求的，之后将后l-7个数倒序排放即可。
+\end{description}
+
+\problem{Kingdom Subdivision}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Log Analysis}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\section{总结}
+
+我是总结。
+
+\end{document}
+

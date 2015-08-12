@@ -1,0 +1,171 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月11日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了5道题目，比赛后完成了6道题目，共完成11道题目。
+
+\section{训练过程}
+
+mty写05，忘删调试信息挂一次，string访问越界挂两次，jj重写05，通过。tdy写07，一次通过。tdy写11，一次通过。mty写03，在算法没有被证明的情况下被jj怂恿去写，wa。tdy提出了正确的解法，mty修改后通过。此时162min。jj写10，没过样例，下来读代码。mty与tdy在jj写10的时候想题，想出了02和04的解法，写02。jj修改10后1次通过。mty与tdy共同写02，将04解法告诉jj。02两次提交后wa，读代码。jj写04，此时剩40min，觉得写不完，弃疗。mty与tdy多次修改02代码，在赛后15min通过。
+
+\section{解题报告}
+
+\problem{Game On the Tree}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+在树上找一条路径，用这条路径上的值当P进制数的每一位，求最大值，输出方案。
+\item[题解]
+即，从树上找一条从非0点开始的最长路径，若有多条选择字典序最大的。\\
+树的中心：树的直径的中间点。最长路径一定经过树的中心，如果不经过，把路径后半段扳过来强行经过树心一定更长。\\
+首先找树心，随便找个点dfs一遍找到最远的，从最远的开始dfs一遍找到最远的。于是得到直径，取中间点（1或2个）就是树心。\\
+对每个树心，先dfs一遍找到最远的非0起点们。然后一起bfs回溯得字典序最大的。删掉起点所在子树，再找最远的字典序最大的，就是终点。然后统计答案即可。
+
+\end{description}
+
+\problem{我是B题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Hotaru's problem}
+
+\begin{description}
+\item[负责] 马天翼、汤定一、金杰
+\item[情况] 比赛中通过 - 202min(5Y)
+\item[题意]
+给出n个数，求最长的连续的一列数，使把它分成三部分，前两部分对称，第一部分和第三部分相同。
+\item[题解]
+先用manacher求出以每个空为中心的最大回文串的长度，然后从最后开始扫，将他们加进set和vector，一旦到了一个位置使后面的某个点无法覆盖到这个点，则将其删除。求答案即可。
+\end{description}
+
+\problem{我是D题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 尚未通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{The shortest problem}
+
+\begin{description}
+\item[负责] 金杰、马天翼
+\item[情况] 比赛中通过 - 51min(4Y)
+\item[题意]
+给一个数，计算各位数之和，并加到这个数最后，重复以上操作t次，问最后所得数是否能被11整除。
+\item[题解]
+能被11整除的条件是奇数位之和与偶数位之和之差能被11整除，因此只要维护奇数位之和和偶数位之和即可。
+\end{description}
+
+\problem{Tetris}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛后通过
+\item[题意]
+给定俄罗斯方块的操作和种类，问消了几次。
+\item[题解]
+暴力模拟。
+\end{description}
+
+\problem{我是G题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是H题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是I题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Leader in Tree Land}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 230min(1Y)
+\item[题意]
+给一棵树上每个点标上1~n的值，每一棵子树的leader是该子树数最大的。问共有k个leader的方案数。
+\item[题解]
+树DP。\\
+f[i][j]表示访问到i点之前的所有先序遍历比i早访问过的点中有j个leader的方案数。每次向儿子DP时，乘上可取标号数的组合数，回溯时传递上来，反正父亲已经处理完了没有用了，方便下个点计算。\\
+DP方程为：\\
+f[v][j]=f[u][j-1]*C[now][sz[v]]\\
+f[v][j]+=f[u][j]*C[now][sz[v]]*(sz[v]-1)\\
+回溯时f[u][j]=f[v][j]\\
+now为可用标号数
+
+\end{description}
+
+\problem{我是K题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+
+\section{总结}
+
+我是总结。
+
+\end{document}
