@@ -116,8 +116,8 @@ void mul(int p,int l,int r,int a,int b,double c){
         return;
     }
     int m=l+r>>1;
-    if (b<=m) mul(p,l,m,a,b,c);
-    else if (a>m) mul(p,m+1,r,a,b,c);
+    if (b<=m) mul(p*2,l,m,a,b,c);
+    else if (a>m) mul(p*2+1,m+1,r,a,b,c);
     else{
         mul(p*2,l,m,a,m,c);
         mul(p*2+1,m+1,r,m+1,b,c);
@@ -164,7 +164,6 @@ double fnd(int p,int l,int r,int a,int b){
 }
 
 void cng(int l,int r){
-    point p1,p2;
     if (l>1){
         getP(1,1,n,l-1);
         getP(1,1,n,l);
@@ -183,7 +182,8 @@ void predo(){
 }
 
 int main(){
-freopen("09.in","r",stdin);
+freopen("1009.in","r",stdin);
+freopen("09.out","w",stdout);
     while(scanf("%d%d",&n,&m),n){
         predo();
         rep(i,1,n) a[i].read();
@@ -202,7 +202,6 @@ freopen("09.in","r",stdin);
                 cng(l,r);
             }
             else if (S[0]=='S'){
-//printf("d%.6f\n",fnd(1,1,n-1,2,2));
                 scanf("%d%d",&l,&r);
                 P.read();
                 scanf("%lf",&k);
@@ -212,18 +211,13 @@ freopen("09.in","r",stdin);
                          (1-k)*P.x,(1-k)*P.y,(1-k)*P.z,1);
                 ins1(1,1,n,l,r,c);
                 cng(l,r);
-//cout<<l<<' '<<r<<endl;
-//rep(cc,1,4)
-//printf("d%.6f\n",fnd(1,1,n-1,cc,cc));
-//rep(i,1,7) cout<<len[i]<<' ';cout<<endl;
                 if (l<r) mul(1,1,n-1,l,r-1,k);
-//printf("d%.6f\n",fnd(1,1,n-1,2,2));
             }
             else if (S[0]=='R'){
                 scanf("%d%d",&l,&r);
                 P.read();
                 P2.read();
-                aa=P2.x; bb=P2.y; cc=P2.z;
+                aa=P2.x/P2.len(); bb=P2.y/P2.len(); cc=P2.z/P2.len();
                 scanf("%lf",&k);
                 ck=cos(k); sk=sin(k);
                 c=matrix(1,0,0,0,

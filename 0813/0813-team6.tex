@@ -1,0 +1,168 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月13日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了6道题目，比赛后完成了5道题目，共完成11道题目。
+
+\section{训练过程}
+
+开局mty写08，wa3发小错误后AC。mty写07，1次通过。tdy写10，1次通过。jj写06，1次通过。tdy写05，1次通过。此时150min。之后jj说会02三个log的预处理，tdy说之后能用莫队搞，于是开始敲，敲的过程中想出一个log预处理，于是继续写，因为longlong wa两发后ac。此时还剩一小时，jj听到隔壁在说网络流，马上跟mty一起找有什么题可以网络流，发现只有04可以。因为直到4小时都几乎没人过04，于是没有人读04。于是mty读04，把题意告诉jj，发现是简单题，于是jj去敲。tdy搞完02，听了04，觉得可行。之后jj写完，死循环，tdy马上重写。tdy写完费用流部分，决定复制jj的建边过程。jj将代码复制过来，三个人一起调整后终于把两份代码拼到一起。此时还有10min。jj发现建边有问题，多次修改。因为是两个人的代码，找错的时候十分混乱，许多接口都对不上。最后在赛后十分钟才通过。
+
+\section{解题报告}
+
+\problem{Travel with candy}
+
+\begin{description}
+\item[负责] 金杰、汤定一
+\item[情况] 赛后通过
+\item[题意]
+在一维上给定n座城市的坐标，从小到大。每座城市有糖果的买卖价格。每走一单位距离就会消耗一单位糖果，背包能装c单位糖果，问走到第n座城市最少需要花多少钱，可能为负数，此时为赚钱。
+回车不换行。
+\item[题解]
+贪心。每到一座城市即装满背包，若背包里一部分糖果的卖价高于买价，即可卖回去。
+\end{description}
+
+\problem{The sum of gcd}
+
+\begin{description}
+\item[负责] 汤定一、金杰
+\item[情况] 比赛中通过 - 250min(3Y)
+\item[题意]
+给定数列A，Q次询问。每次询问l，r所有子区间的gcd。
+\item[题解]
+莫队。以每个位置开始和结尾的gcd值最多logn个不同的值，预处理出每一段的端点即可。前缀断点从右往左做，后缀断点从左往右做。在莫队里移动左右端点时每次logn询问即可。
+\end{description}
+
+\problem{GCD?LCM!}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+$$F(n)=\sum_{i=1}^n\sum_{j=1}^n~[~lcm(i,j)+gcd(i,j)\geq n~] $$\\
+$$S(n)=\sum_{i=1}^nF(i)$$\\
+给n，输出S[n]
+\item[题解]
+d=gcd(i,n),a=i/d,b=n/d,lcm(i,n)+gcd(i,n)=abd+d>=n\\
+由F[n]推F[n+1]时，由于n固定，枚举d，则b固定，a可O(1)求。但刚好==n的到F[n+1]就失效了，因此要求出T[n]表示刚好等于的，这个求法就是上文说的。那么F[n]就没必要用类似T的方法求，因为lcm(i,n)>=n，所以F[n+1]=F[n]+(2n-1)-T[n];
+\end{description}
+
+\problem{Yu-Gi-Oh!}
+
+\begin{description}
+\item[负责] 金杰、汤定一
+\item[情况] 赛后通过
+\item[题意]
+游戏王，场面上n只小怪，分AB两种，有m种大怪可以融合，融合条件是一只A一只B融合成一只大怪，A的星+B星=打怪的星。某些大怪有必须谁来融合的要求。问攻击力之和的最大值。
+\item[题解]
+网络流，A左边一列，B右边一列，两两连边如果可以融合，费用为增加的攻击力。跑最大费用可行流即可。
+\end{description}
+
+\problem{Danganronpa}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 154min(1Y)
+\item[题意]
+ 给定n个主串，m个子串。问每个主串包含子串的总次数，一个子串在主串的不同位置出现算多次。
+\item[题解]
+AC自动机。以子串建AC自动机，主串在AC自动机上跑并统计答案即可。
+\end{description}
+
+\problem{The path}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 112min(1Y)
+\item[题意]
+给有向图，要求给图中的边标上n以内的长度，使得d[1]<....<d[x]>...>d[n]
+\item[题解]
+事先标上d[x]的值，从两边往中间标号，从1到n标。\\
+bfs，每次取最左边或最右边还没标上距离的，标上++cnt，然后从到他的边中随便找一条，计算两点差当长度，其他边长度定为最大值。因为保证有解，所以每次都一定能拿到最左边或最右边的，否则就不满足拓扑了。
+\end{description}
+
+\problem{Cover}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 81min(1Y)
+\item[题意]
+给出一个初始矩阵，以及一些操作，把某一行或者某一列都变成某一个数字，再给出目标矩阵，求一种操作的排列，使初始变成目标。
+\item[题解]
+因为肯定有解，倒着扫一遍即可。
+\end{description}
+
+\problem{Clock}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 38min(4Y)
+\item[题意]
+给出一个时间，求该时间点三根针之间的角度。
+\item[题解]
+直接做就行了，注意12-23点是0到11点。
+\end{description}
+
+\problem{Geometer's Sketchpad}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 赛后通过
+\item[题意]
+空间中一些点，有平移，缩放，绕任意轴旋转操作。询问一个点当前坐标和询问一段区间中相邻点距离和。
+\item[题解]
+将点x,y,z定义成矩阵(x,y,z,1)，将三个操作分别求出4*4矩阵，于是就可以用线段树维护第一问。注意到平移旋转不会改变区间内相邻点距离，缩放只同时改变k倍，所以再搞一个线段树支持区间修改，然后修改边缘的两个点即可。
+\end{description}
+
+\problem{Zero Escape}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 62min(1Y)
+\item[题意]
+给定n个人的值，两个门A、B的值，1~9。两个数的数字根为两数和的各位数字之和，为1~9。一群人进入一扇门的条件为他们的和的数字根为门上的值。问使得每个人进入任意一扇门的方案数。
+\item[题解]
+背包出数字根为1~9的方案数。最后要注意所有人进入一扇门的讨论。
+\end{description}
+
+\problem{tree}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 赛后通过
+\item[题意]
+给定一个n个节点的树，每个节点上有一个值。m次询问，两种操作：1.修改一个点的值2.询问一个点与根到它的路径上一个点异或的最大值。
+\item[题解]
+用dfs序建线段树，每次更改操作影响连续的一段，询问操作询问线段树根到它的最大值。线段树上的每个节点存一个字典树。答案在字典树上找。但是这样做会爆空间。把线段树拆成logn层一层一层地做，每层做一遍询问，更新答案即可。
+\end{description}
+
+\section{总结}
+
+永远不要把两个人的代码拼到一起，很乱的。\\
+有可能有人会带歪板，尤其是有很多高中生在。在赛程过半之前一定要保证所有题目都读过。
+
+
+\end{document}
+
+

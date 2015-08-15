@@ -1,0 +1,154 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月14日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了7道题目，比赛后完成了2道题目，共完成9道题目。
+
+\section{训练过程}
+
+开局mty写A，一次通过。tdy和jj读题。然后jj写B，一次通过。tdy把C题意告诉jj，一起想了一会儿，jj决定读一遍C，发现只有往前的限制，写C。tdy读题，想出F。C没过样例，测样例发现算法有问题，tdy去写F，至半换jj写C，一次通过，然后F一次通过。mty在写完A后推了D，在F通过后开始写D，然后wa了。jj和tdy读题想题，发现E是模拟题，准备等mty写完D交给他写E。然后jj想出了G，在D提交后开始写G，RE。由于D仍然未过，tdy读过后面的题后觉得都不太可做，开始写E。期间my和jj不停修改提交。jj实在无法发现错误，于是非常弃疗的改了没影响的东西再交，白白多RE了两次，最后发现是清空问题，AC。mty一直在推导物理计算过程是否错误，修改了许多地方仍然wa。在G通过后把代码交给jj看，发现是初始最大值不够大的问题，修改后通过。然后tdy继续写E，一次通过。此时还有1小时，三个人一起想I。jj推出了一个很奇怪的DP方程，因为没有时间没有证明就上去写了，mty和tdy继续想，认为jj的做法是有后效性的，但因为没有明确清楚jj的做法而且时间很紧就没有说。jj写到一半觉得肯定错了，没过样例后又弃疗式更改一些地方还是错误，事实证明只要倒过来做DP就可以了，应该在写之前跟队友讲清楚做法。
+
+\section{解题报告}
+
+\problem{Bit String Reordering}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 25min(1Y)
+\item[题意]
+给一个数列，表示一串由01组成的数列的连续的0和1的个数，再给出一个初始序列，只能交换相邻两个数，问最少交换几次得到目标数列。
+\item[题解]
+有两个可能的数列，一位一位交换到位即可。
+\end{description}
+
+\problem{Miscalculation}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 35min(1Y)
+\item[题意]
+给个只有+*的表达式，问是从左到右计算还是先*后+。
+\item[题解]
+后缀表达式。
+\end{description}
+
+\problem{Shopping}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 63min(1Y)
+\item[题意]
+从0走到n+1，中间有n家商店，有一些<u,v>，u<v，去u之前必须去过v，问多久能逛完到n+1。
+\item[题解]
+如果有两条关系有重叠部分，则并成一条，那么每条都无重叠了，先走到最大要去的，然后到最小之前不能去的，再往前走即可。
+\end{description}
+
+\problem{Space Golf}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛中通过 - 180min(7A)
+\item[题意]
+给一个初始点和目标点，发射一枚子弹，做抛体运动，与地接触后发生完全弹性碰撞，给出最大反弹次数，中间有一些高度不同的障碍物，问初速度最小为多少，使子弹能到达目标点。
+\item[题解]
+推出公式二分即可。
+\end{description}
+
+\problem{Automotive Navigation}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 239min(1Y)
+\item[题意]
+给定n条路组成的城市，m条记录。每条记录记录了走过的里程数以及当前的方向。问目前可能在哪个坐标上。
+\item[题解]
+模拟题。50*50*4，城市大小50*50，4个方向。
+\end{description}
+
+\problem{There is No Alternative}
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 80min(1Y)
+\item[题意]
+给定n个点，m条边，问哪些边是最小生成树的必须边。
+\item[题解]
+Kruscal，若u，v在不同集合，合并两个集合，否则把u到v的路径上所有与当前边边权相等的边标记为非必须边即可。
+\end{description}
+
+\problem{Flipping Parentheses}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 177min(4Y)
+\item[题意]
+给一个合法括号序列。每次改变一个括号，问改变最左边的能使序列重回合法的括号位置。
+\item[题解]
+(为1，)为-1，前缀和，合法条件为每个点都>0。\\
+若将一个1改-1，则把最左边的-1改1即可，用set维护。\\
+若将一个-1改1，则把最右边的<2的点改成-1即可，要用线段树维护区间最小值。
+\end{description}
+
+\problem{Cornering at Poles}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Sweet War}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+n(<150)颗巧克力们在栈里，每次只能吃最上面的那颗。每颗巧克力有能量值(<1e9)和分数(<150)。A和B有初始能量值，轮流操作，可以选择吃掉最上面这个，增加该巧克力的能量和分数，可以选择不吃，则消耗1点能量值。问最后两人的分数。
+\item[题解]
+倒着做，f[i][j]表示当前第i颗，得到j分数，先手，至少需要多少体力值。转移过程中取min。最后看f[1][j]最大的j使得小于A-B。
+\end{description}
+
+\problem{Exhibition}
+
+\begin{description}
+\item[负责] 马天翼
+\item[情况] 比赛后通过
+\item[题意]
+有n个产品，每个产品有三个属性x，y，z，从中选k个使($x_{i1}+x_{i2}+...+x_{ik}$)*($y_{i1}+y_{i2}+...+y_{ik}$)*($z_{i1}+z_{i2}+...+z_{ik}$),现在可以修改第一个产品的每一个属性，但需要付出百分比的某个数的代价，问最小花费多少代价，使第一个产品有可能被选中。
+\item[题解]
+将公式*3，可以的得到一个Σ(Px+Qy+Rz)的公式，我们发现这是两个向量的点乘，即一个向量在另一个向量上的投影。那么问题转化成了，求在(P,Q,R)向量投影上的前k小的向量的公式和。然后我们枚举空间中的n三次方个空间进行判断，再进行12次讨论即可（太烦了，实在讲不出来）。
+\end{description}
+
+\problem{L infinity Jumps}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\section{总结}
+
+在时间很紧的情况下，是否要跟队友充分交流似乎是个没有明确策略的抉择。\\
+永远相信题目和评测机的正确，不要怀疑逻辑正确的写法能不能这么写，不要弃疗式提交。
+
+\end{document}
+
+
