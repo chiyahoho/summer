@@ -17,7 +17,7 @@ using namespace std;
 typedef long long ll;
 
 const int N=230000;
-int n,m,l,r;
+int n,m,l,r,ca;
 double s[8*N],len[8*N],aa,bb,cc,ck,sk,k;
 char S[50];
 
@@ -179,6 +179,7 @@ void cng(int l,int r){
 
 void predo(){
     For(i,4) For(j,4) ini.a[i][j]=(i==j);
+    printf("Case #%d:\n",++ca);
 }
 
 int main(){
