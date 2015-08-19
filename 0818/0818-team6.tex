@@ -1,0 +1,173 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月18日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了3道题目，比赛后完成了N道题目，共完成N道题目。
+
+\section{训练过程}
+
+开局mty写03，wa了以后发现没那么简单。jj写05，没过样例，喊tdy马上上来重写。jj去读题，发现04是水题，准备写。tdy因为公式推错wa2发，ij打反wa1发，74min通过。jj觉得好像没写错，把04代码交给mty看，mty也觉得题意和代码都没错，于是放弃。tdy写01，jj和mty搞07。tdy发现公式错了，mty去写07。tdy回来写01，仍然未过，发现是题意读错，于是再换07。期间jj在读题和想03和08。jj莫名想到04中的一个特例，于是修改后通过，此时还有2小时。mty和jj一起看07代码找错，终于改对之后提交，TLE。然后jj想到07一个简单的结论，于是省了一个搜索，但tdy在机子上写01。01在第四个小时通过，还剩1小时。mty修改07之后，wa了，修改了几次仍然wa，因为代码是之前的改的，所以很长而且逻辑混乱，jj决定重写07，此时还有40min。tdy想出了03，在强调肯定没有错而且写的很快之后，jj将机子让给tdy。03没有过样例，于是jj继续重写07，此时还有20min。07没过样例，换03，此时还有8min。07读代码找到错误，在还有4min提交了一次，wa了。剩下4min继续尝试03，至结束未通过。07在赛后调试10min后通过。
+
+\section{解题报告}
+
+\problem{我是A题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。\\这是换行
+回车不换行。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是B题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是C题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛后通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Too Simple}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 175min(4Y)
+\item[题意]
+有m个从集合1-n到集合1-n的映射，有一些映射不知道，表示成-1，问最后有多少方案能使所有的i经过所有映射后等于i。
+\item[题解]
+如果有多个-1，则其他-1随便排，让最后一个-1排成满足答案的即可。如果没有-1，则直接判断是否满足答案。注意，即使有-1，如果某个映射使集合size变小了也是永远不能满足答案的。
+\end{description}
+
+\problem{我是E题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是F题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Travelling Salesman Problem}
+
+\begin{description}
+\item[负责] 金杰、马天翼
+\item[情况] 比赛后通过
+\item[题意]
+n*m的棋盘上每个点都有一个非负的数，问从左上角走到右下角最大能收集到的数字和。
+\item[题解]
+如果n或m是奇数，则走蛇形即可。否则至少有1个点会到不了。如果i+j为奇数，发现一定能构造只牺牲这个点的方案。如果i+j为偶数，发现至少牺牲另一个i+j为奇数的点，所以绝对会经过所有偶数点。于是找奇数点里值最小的即可。
+\end{description}
+
+\problem{我是H题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是I题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是J题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是K题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是L题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\section{总结}
+
+我是总结。
+
+\end{document}
+
+

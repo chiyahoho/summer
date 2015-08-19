@@ -1,0 +1,151 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月3日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+开局mty写J，一次通过。jj写H，wa了。tdy看了H的题目，坚持认为jj读错题，而jj认为没有理解错，在jj将信将疑下，写了，通过。mty和tdy讨论后，mty去写E。期间jj和tdy想题，攒下了许多题。90min，E题wa了，tdy马上上去写F。没过样例，调试10min，换jj去写G。tdy在机下发现错误，修改后1次通过，然后jj的G1次通过，此时过去两个半小时。mty一直在做E。tdy和jj都认为在B在残量网络上继续跑就可以，于是tdy去写B，然而TLE。tdy想出了I的做法，将解法告诉jj，jj写I，一次通过，此时3小时22分。因为E消耗了太多时间，mty放弃E，去找B的模板。tdy在mty的帮助下来重写E，通过。mty找到了B的模板觉得应该是的，交给jj，去帮忙搞E了。jj抄完模板，通过。
+
+\section{训练过程}
+
+我是过程。
+
+\section{解题报告}
+
+\problem{我是A题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(2Y)
+\item[题意]
+我是题意。\\这是换行
+回车不换行。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Nubulsa Expo}
+
+\begin{description}
+\item[负责] 金杰、马天翼、汤定一
+\item[情况] 比赛中通过 - 280min(2Y)
+\item[题意]
+给无向图，从中找一个点当汇点，问最小的从1到汇点的最大流。
+\item[题解]
+最大流即最小割，1一定在割的一边，所以即是求无向图全图最小割。模板题。
+\end{description}
+
+\problem{Shade of Hallelujah Mountain}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是D题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 尚未通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是E题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{我是F题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Farm Game}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 144min(1Y)
+\item[题意]
+给n种作物的价格和数量。再给很多1个a能换k个b的转换关系。问最多能卖多少钱。
+\item[题解]
+因为保证无环，是拓扑图，倒着推，把价格更新过去就好了。最后统计一遍。
+\end{description}
+
+\problem{Selecting courses}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 88min(2Y)
+\item[题意]
+给n门课的开放时间，学生每选一节课，下一次选课时间是5分钟后，其他时间无效，问最多多少门课。
+\item[题解]
+枚举第一门课选课时间，然后模拟跑一遍，每次选结束时间最早的那个即可。
+\end{description}
+
+\problem{Let the light guide us}
+
+\begin{description}
+\item[负责] 金杰、汤定一
+\item[情况] 比赛中通过 - 202min(1Y)
+\item[题意]
+n*m的棋盘上每行要建一个塔。给每个格点的建塔费用。再给每个格点的魔法值，相邻行的两个塔的距离不能大于两点魔法值之和。求最小费用。
+\item[题解]
+dp[i][j]表示前i-1行都建了塔，第i行建在j上的最小总费用。每行建一棵线段树，把dp[i][j]更新到这个点左右魔法值的范围内。然后下一行每个点的费用值就是该点左右魔法值范围内的最小值+该点费用。
+\end{description}
+
+\problem{我是J题的标题}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 233min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\section{总结}
+
+我是总结。
+
+\end{document}
+
+
