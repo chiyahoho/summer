@@ -1,0 +1,138 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月21日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了5道题目，比赛后完成了3道题目，共完成8道题目。
+
+\section{训练过程}
+
+开局mty发现H是简单题，跟jj讲过之后马上敲，1A。然后tdy看到了J，发现可做，跟mty和jj讲过之后去敲，RE。在做J的期间jj想出了A，因为要java于是又跟mty讨论出了C，tdy下机让jj去写C。之后mty一直在读题，读完了所有题。tdy下来看了一会儿代码，又RE了一次发现是清空问题，AC。C题wa了以后jj下来看代码，又wa了一发之后发现判断条件写错，又跟mty讨论出了正确的判断条件，AC。然后tdy去写I，mty把读过的题都告诉jj，jj想出了F，可以准备写。mty跟jj讲了D的做法，可行，于是mty去想细节。I题下机了，jj去写F，因为前几天写了好多计算几何，一次过样例一次AC。然后继续写A，A题过样例了，tdy放下手中的题，来把C++翻译成java，jj在一边看着，改完以后提交，wa了。mty找到A的反例，jj去想。然后mty去写D。tdy去想I，发现不可做，放弃去想B。jj修好了A的bug以后发现其他地方还有问题，并且不能解决，于是想D。jj想出了不用判各种局面的方法，去告诉mty，mty正要写麻烦的各种局势判断，代码稍作修改就换成jj的方法，之后jj在旁边看着mty写D。然后D题wa了，tdy去写B，tdy觉得B越搞越麻烦，要写的东西很多。mty和jj在读D的代码，各发现了一些错误之后提交，AC。
+
+\section{解题报告}
+
+\problem{Naughty fairies}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+给$n,m<10^{500}$，可以对m做+1/-1/*2三种操作，问最少多少次操作能使m变成n。
+\item[题解]
+f[i]=从i变n的最少次数。若i为偶数，则f[i/2]=f[i]+1;若i为奇数，则f[i/2]=f[i]+2;注意f[i]可以从f[i*2]和f[i*2+1]转移过来，并且走其他路显然是不合算的。那么每次n/=2，更新f[n/2]和f[n/2+1]，然后两个数都/2去处理。然后发现每层都只有2个值要计算，效率log。最后再计算每个计算过的f[i]+|i-m|的最小值。BigInteger。
+\end{description}
+
+\problem{Prison Break}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛后通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{To Be an Dream Architect}
+
+\begin{description}
+\item[负责] 金杰、马天翼
+\item[情况] 比赛中通过 - 103min(3Y)
+\item[题意]
+n阶魔方中删去m条，问共删去多少块。
+\item[题解]
+先去掉不合条件的和重复的条，那么每块最多被3条消去。m条两两求交点，被提到两次的算重复一次，被提到6次的算重复两次，减去就是答案。
+\end{description}
+
+\problem{Gomoku}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 291min(2Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Gunshots}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{Rotational Painting}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 155min(1Y)
+\item[题意]
+给一个多边形，问有多少种形态可以稳定的放在桌面上。
+\item[题解]
+稳定的条件是重心不落在地面支撑点外。先求出多边形重心。然后对多边形求一次凸包，每一条凸包上的边就是一个可以放在桌面上的形态，但未必稳定，再用点积判断重心是否落在线段内。
+\end{description}
+
+\problem{Traffic Real Time Query System}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{National Day Parade}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 15min(1Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Searchlights}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛后通过
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\problem{Infinite monkey theorem}
+
+\begin{description}
+\item[负责] 负责一、负责二
+\item[情况] 比赛中通过 - 71min(3Y)
+\item[题意]
+我是题意。
+\item[题解]
+我是题解。
+\end{description}
+
+\section{总结}
+
+我是总结。
+
+\end{document}

@@ -1,0 +1,150 @@
+\documentclass[a4paper, 11pt, nofonts, nocap, fancyhdr]{ctexart}
+
+\usepackage[margin=60pt]{geometry}
+
+\setCJKmainfont[BoldFont={方正黑体_GBK}, ItalicFont={方正楷体_GBK}]{方正书宋_GBK}
+\setCJKsansfont{方正黑体_GBK}
+\setCJKmonofont{方正仿宋_GBK}
+
+\CTEXoptions[today=small]
+
+\pagestyle{plain}
+
+\renewcommand{\thesubsubsection}{Problem \Alph{subsubsection}.}
+\newcommand{\problem}[1]{\subsubsection{#1}}
+
+\title{Fudan ACM-ICPC Summer Training Camp 2015}
+\author{Team 6 汤定一/马天翼/金杰}
+\date{2015年8月20日}
+
+\begin{document}
+
+\maketitle
+
+\section{概况}
+
+本场训练，我们队伍在比赛中完成了5道题目，比赛后完成了4道题目，共完成9道题目。
+
+\section{训练过程}
+
+开始大说这套题是水题，然后我们就开始去找签到题，然后并没有找到可以秒的题。jj发现05是一道多重背包，就上去写了，1A。tdy觉得06可做，写完wa了一发，然后A了。mty一直在推02的公式，但是没有推出很强的结论。然后jj写11，但是一直wa了8发，tdy上去写09，3A。mty写02，TLE，jj换方法重写，还是T。接着tdy写01。01也一直wa，tdy和jj决定让tdy重写11，在重写过程中发现了jj的错误，jj修改后过掉。然后mty和jj帮tdy找错误，找出错误后修改过掉，8A。最后mty和jj想找02的规律，但是由于时间过短找不到，比赛结束。
+
+\section{解题报告}
+
+\problem{CRB and Apple}%A
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 279min(8Y)
+\item[题意]
+给定n个苹果，每个苹果有高度值、美味值。两个人一起吃苹果，只能从高往低吃，美味值从小往大吃，问最多能吃多少个。
+\item[题解]
+把苹果按高度为第一关键字，美味值为第二关键字排序。建费用流图，每个苹果拆点，美味值小的往大的连边，跑两次费用流即可。注意建边的时候有些边是不用建的，比如高度a>b>c，美味值a<b<c，只用建a到b的边和b到c的边，不用建a到c的边。
+\end{description}
+
+\problem{CRB And Candies}
+
+\begin{description}
+\item[负责] 马天翼、金杰
+\item[情况] 比赛后通过
+\item[题意]
+求C(n,0)、C(n,1)、……、C(n,n)的LCM。
+\item[题解]
+找规律可得。。。。。
+\end{description}
+
+\problem{CRB and Farm}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛后通过
+\item[题意]
+凸包内有k个点，要求在凸包的顶点中选取最多2k个点，使得这些点形成的新凸包能完全包含这k个点。
+\item[题解]
+先对k个点求凸包，注意到一旦大凸包不能完全包含小凸包，一定是有一个点出去了，所以从小凸包内部任取一点，向小凸包上每个顶点连出一条射线，交于大凸包的一条边，选取该边的两个顶点，就一定能把所以小凸包顶点包进去。又因为小凸包顶点最多k个，我最多选取2k个，刚好满足条件。
+\end{description}
+
+\problem{CRB and Graph}%D
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛后通过
+\item[题意]
+给定无向图，对每条割边，输出u、v，若删掉割边e，点u、v不连通，u<v，u尽量大时v尽量小。
+\item[题解]
+tarjan求割边，缩点。以n所在的块为根，每条割边的答案即为其子树中最大的结点值u，u+1，因为u+1肯定不在子树中，此时答案最优。
+\end{description}
+
+\problem{CRB and His Birthday}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 33min(1Y)
+\item[题意]
+给n种物品的体积，给背包容量，第i种物品取x(x>0)个的价值是ai*x+bi，问最大价值。
+\item[题解]
+把每种物品拆成一个限制数量1的价值为ai+bi的物品和无限制数量的价值为ai的物品，然后用多重背包队列优化即可。
+\end{description}
+
+\problem{CRB and Puzzle}%F
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 81min(1Y)
+\item[题意]
+给定n个节点以及每个结点后可接的结点，问长度不超过m的串的不重复数量。
+\item[题解]
+矩阵，前n维记录以i结点结尾的串的不重复个数。加一维记录答案。
+\end{description}
+
+\problem{CRB and Queries}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{CRB and Roads}%H
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛后通过
+\item[题意]
+给定有向无环图，求非必须边个数，对一条边(u,v)若u能通过其他路径到v，称(u,v)为非必须边。
+\item[题解]
+拓扑序，从上往下，用bitset记录能到达i的结点，每个点的反边按拓扑逆序排序后边查边做即可。
+\end{description}
+
+\problem{CRB and String}%I
+
+\begin{description}
+\item[负责] 汤定一
+\item[情况] 比赛中通过 - 131min(3Y)
+\item[题意]
+给定a串b串，求能否把a串变成b串。可以在a串其任意字符u后面加一个字符v(u!=v)。
+\item[题解]
+贪心。从前往后，找到a串中的每个字符i依次在b串中出现的位置，若i在b串中连续出现，则连续出现的最后一个，此时若a串也连续出现字符i把这些都放在b串连续出现的位置。注意特殊判断第一个字符。
+\end{description}
+
+\problem{CRB and Substrings}
+
+\begin{description}
+\item[情况] 尚未通过
+\end{description}
+
+\problem{CRB and Tree}
+
+\begin{description}
+\item[负责] 金杰
+\item[情况] 比赛中通过 - 247min(9Y)
+\item[题意]
+树上的边有边权，给定m，问有多少对u,v，从u到v的路径上所有权值xor和为m。
+\item[题解]
+先以1为root跑一遍从root到i的xor和为a[i]，只要统计有多少j使得a[j]=a[i] xor m，因为lca上边的那些都两次xor掉了。注意m=0的情况有些不同，要先统计非u,u的情况除以2，再加上u,u的情况不除以2。
+\end{description}
+
+\section{总结}
+
+决定重写的时机不太好掌握，因为没有一个显而易见的肯定正确的策略在那里。\\
+今天已经是第三次找规律题没有找规律而做不出来了，如果可以打表找规律的题一定要试试。
+
+\end{document}
